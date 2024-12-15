@@ -12,6 +12,7 @@ import {
 import { Bar } from "react-chartjs-2";
 import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
+import { CircularProgress } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,
@@ -100,7 +101,12 @@ const StatsDashboard = () => {
     fetchPokemonData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <CircularProgress />
+      </div>
+    );
   if (error) return <div>{error}</div>;
 
   return (
